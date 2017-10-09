@@ -24,6 +24,12 @@ app.use(errorhandler());
 mongoose.createConnection('mongodb://localhost/thrifa-test');
 mongoose.set('debug', true);
 
+
+
+require('./models/Question');
+require('./models/Option');
+
+
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
