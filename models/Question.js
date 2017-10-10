@@ -5,6 +5,7 @@ Schema = mongoose.Schema
 var QuestionSchema = new mongoose.Schema({
   title: String,
   subtitle: String,
+  multiple: Boolean,
   options: [
     { 
       id: Schema.Types.ObjectId,
