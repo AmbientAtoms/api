@@ -15,11 +15,7 @@ router.get('/api/questions', function(req, res, next) {
   });
 });
 
-
 router.post('/api/questions/:id/validation', function(req, res, next) {
-  //console.log(req.params.id);
-  //console.log(req.body.options);
-
   Question.findById(req.params.id, function (err, question) {
     if (err) return next(err);
 
@@ -37,5 +33,13 @@ router.post('/api/questions/:id/validation', function(req, res, next) {
 
   });
 });
+
+router.delete('/api/questions/:id', function(req, res, next) {
+  Question.findByIdAndRemove(req.params.id, req.body, function (err, question) {
+    if (err) return next(err);
+    res.json(question);
+  });
+});
+
 
 module.exports = router;
