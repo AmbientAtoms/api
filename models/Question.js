@@ -1,12 +1,17 @@
 var mongoose = require('mongoose');
-var User = mongoose.model('Option');
+//var User = mongoose.model('Option');
+Schema = mongoose.Schema
 
 var QuestionSchema = new mongoose.Schema({
   title: String,
   subtitle: String,
-  multiple: Boolean,
-  options: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Option' }],
-  valid: { type: mongoose.Schema.Types.ObjectId, ref: 'Option' }
+  options: [
+    { 
+      id: Schema.Types.ObjectId,
+      answer: String, 
+      valid: Boolean 
+    }
+  ]
 }, {timestamps: true});
 
 mongoose.model('Question', QuestionSchema);

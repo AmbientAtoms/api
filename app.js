@@ -21,11 +21,15 @@ app.use(session({ secret: 'thrifa', cookie: { maxAge: 60000 }, resave: false, sa
 
 app.use(errorhandler());
 
-mongoose.createConnection('mongodb://localhost/thrifa-test');
+//mongoose.createConnection('mongodb://localhost/thrifa-test');
+mongoose.connect('mongodb://localhost/thrifa-test')
+.then(() =>  console.log('connection succesful'))
+.catch((err) => console.error(err));
+
 mongoose.set('debug', true);
 
 
-require('./models/Option');
+//require('./models/Option');
 require('./models/Question');
 
 app.use(require('./router'));
