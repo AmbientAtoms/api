@@ -29,10 +29,10 @@ mongoose.connect('mongodb://localhost/thrifa-test')
 mongoose.set('debug', true);
 
 
-//require('./models/Option');
+require('./models/User');
 require('./models/Question');
 
-app.use(require('./router'));
+app.use(require('./routes'));
 
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
