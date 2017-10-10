@@ -12,6 +12,8 @@ router.post('/', function(req, res, next) {
 router.get('/', auth.optional, function(req, res, next) {
   Question.find(function (err, questions) {
     if (err) return next(err);
+    //remove valid property
+    questions.map(x => x.options.forEach(o => o.valid = undefined))
     res.json(questions);
   });
 });
